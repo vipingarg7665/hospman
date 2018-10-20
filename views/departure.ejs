@@ -1,0 +1,341 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Bringo</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="stylesheets/paper-dashboard.css" rel="stylesheet"/>
+
+    
+    <link href="stylesheets/themify-icons.css" rel="stylesheet">
+ 
+</script>
+
+</head>
+<body>
+    
+<div class="wrapper">
+	<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+   
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+             <center> <h3>BrinGo</h3></center>
+                
+            </div>
+
+            <ul class="nav">
+                    <li >
+                            <a href="/bringo/visitorAdmin">
+                                <i class="ti-panel"></i>
+                                <p>Visitor/Guest Details</p>
+                            </a>
+                        </li>
+               
+             <li >
+                    <a href="/bringo/pickup">
+                        <i class="ti-panel"></i>
+                        <p>pickup</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/bringo/departure">
+                        <i class="ti-panel"></i>
+                        <p>departure</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="/bringo/meal">
+                        <i class="ti-panel"></i>
+                        <p>meal</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="/bringo/room">
+                        <i class="ti-panel"></i>
+                        <p>Accommodation</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Departure</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+						<li>
+                            <a href="#">
+								<i class="ti-settings"></i>
+								<p>setting</p>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+       
+      
+      
+             <div class="col-sm-8 col-sm-offset-2">
+                <div class="jumbotron text-center">
+                      
+          
+                         <img src="image/chitkaraLogo.png" alt="logo" width="200" height="100">
+                </div>
+     
+            <form action="/bringo/login" method="post">
+                
+                    
+                         <div class="form-group">
+                                    <div class="form-group">
+                                   <label>Deaparture Date :</label>
+                                    <input type="date"  name="ddate" placeholder="deaparture date" class="form-control border-input" >
+                                  <label>Deaparture time :</label>
+                                    <input type="time"  name="dtime" placeholder="deaparture time" class="form-control border-input" >
+                                     <label>pick Required</label>
+                                      <select name="pickup-req"  class="form-control border-input"> 
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                          </select>
+                                        <label>pickup info *</label>
+                                     <select name="pickup"  class="form-control border-input"> 
+                                    <option value="Chandigarh Airport">Chandigarh Airport</option>
+                                    <option value="Chandigarh Railway">Chandigarh Railway</option>
+                                    <option value="Rajpura Railway station">Rajpura Railway station</option>
+                                     <option value="Ambala cantt Railway station">Ambala cantt Railway station</option>
+                                  </select><br>
+                                    <label>if others then</label>
+                                    <input type="text"  name="pickup1" placeholder="pickup" class="form-control border-input" >
+                                   <hr color="grey" size="30">
+ 
+                                   <label>Drop Transport cordinator *</label>
+                                          <select name="Drop Transport cordinator" id="mySelect1" onchange="myFunction1()" class="form-control border-input"> 
+                                <option value="123456789">abc</option>
+                                <option value="987642525">cde</option>
+                                <option value="4563778388">efg</option>
+                                 <option value="73666664364">cde</option>
+                                  <option value="13242435">5</option>
+                                 <option value="444445455t4">6</option>
+                                <option value="444t45533">7</option>
+                                 <option value="24345545555">8</option>
+
+                              </select>
+ 
+                                           
+                                   
+                                             <label>phone No</label>
+                               <script>
+function myFunction1() {
+var x = document.getElementById("mySelect1").value;
+document.getElementById("demo1").value = x;
+}
+</script>
+
+
+                                                        <input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo1" value="" required>
+                                
+
+                                <hr color="grey" size="30">
+                                    <label>drop person *</label>
+                                              <select name="drop person" id="mySelect" onchange="myFunction()" class="form-control border-input"> 
+                                <option value="123456789">abc</option>
+                                <option value="987642525">cde</option>
+                                <option value="4563778388">efg</option>
+                                 <option value="73666664364">cde</option>
+                                  <option value="13242435">5</option>
+                                 <option value="444445455t4">6</option>
+                                <option value="444t45533">7</option>
+                                 <option value="24345545555">8</option>
+
+                              </select>
+ 
+                                           
+                                   
+                                             <label>phone No</label>
+                               <script>
+function myFunction() {
+var x = document.getElementById("mySelect").value;
+document.getElementById("demo").value = x;
+}
+</script>
+
+
+<input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo" value="" required><br/><br/>
+                                     <div class="col-md-4">
+                                      <div class="form-group">
+                                                <label>Vehicle type</label>
+                                                <select name="vt"  class="form-control border-input"> 
+                                    <option value="Chandigarh Airport">ABC</option>
+                                    <option value="Chandigarh Railway">CDE</option>
+                                    <option value="Rajpura Railway station">GHI</option>
+                        
+                                  </select>
+                                              
+                                            </div>
+                                        </div>
+                                       <div class="col-md-4">
+                                            <div class="form-group">
+                                               
+                                              <label>CAPACITY</label>
+                                                           <select name="cp"  class="form-control border-input"> 
+                                    <option value="Chandigarh Airport">1</option>
+                                    <option value="Chandigarh Railway">2</option>
+                                    <option value="Rajpura Railway station">3</option>
+                                     <option value="Rajpura Railway station">4</option>
+                                      <option value="Rajpura Railway station">5</option>
+                                     <option value="Rajpura Railway station">6</option>
+                                    <option value="Rajpura Railway station">7</option>
+                                     <option value="Rajpura Railway station">8</option>
+                                  </select>
+                                               
+                                            </div>
+                                        </div>
+                                      <div class="col-md-4">
+                                            <div class="form-group">
+                                                
+                                                 <label>Vehicle NO</label>
+                                                           <select name="vn"  class="form-control border-input"> 
+                                    <option value="Chandigarh Airport">123</option>
+                                    <option value="Chandigarh Railway">455</option>
+                                    <option value="Rajpura Railway station">678</option>
+                        
+                                  </select>
+                                            </div>
+                                        </div>
+
+
+
+ 
+
+       
+       <center><h5>Accompanied by :(pick up)</h5></center>
+ <div id="box"><div id="row1">
+ <div class="col-md-4">
+                                      <div class="form-group">
+                                             
+                                              <label>full name</label>
+                                          <input type="text"  name="full name" placeholder="full name" class="form-control border-input" > 
+                                            </div>
+                                        </div>
+                                       <div class="col-md-4">
+                                            <div class="form-group">
+                                             <label>departement</label>
+                                              
+                                              
+                                                         <input type="text"  name="departement" placeholder="departement" class="form-control border-input" > 
+                                               
+                                            </div>
+                                        </div>
+                                      <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>contact number</label>
+                                              
+                                                
+                                                     <input type="number"  name="contact number" placeholder="contact number" class="form-control border-input" > 
+                                            </div>
+                                        </div>
+ <br><br><input type="button" onclick="newrow(this)" value="New" class="button-new" ><input type="button" onclick="deleterow(this)" value="Delete" style="display: none" class="button-delete"> <br><br></div></div>
+<input type="submit" class="btn btn-info btn-fill btn-wd"   value="confirm & exit"  >
+             </form>
+
+        </div>
+</div>
+             
+
+</body>
+<script>
+ function newrow(id){
+         var row= id.parentNode; 
+            var box=document.getElementById("box");
+        var dnew=row.cloneNode(true);
+        box.appendChild(dnew);
+          var deletelist= box.getElementsByClassName("button-delete");
+        var display="none";
+        if(deletelist.length>1){
+            display="";}
+        for(i=0;i<deletelist.length;i++){
+            deletelist[i].style.display= display; 
+        }
+        }
+        
+    
+        function deleterow(id){
+            var row= id.parentNode; 
+            var box=document.getElementById("box");
+            box.removeChild(row);
+            var deletelist= box.getElementsByClassName("button-delete");
+            if(deletelist.length<2){
+                deletelist[0].style.display="none"; } 
+        }
+    
+    
+    
+    </script>
+
+    <script src="javascripts/jquery.min.js" type="text/javascript"></script>
+	<script src="javascripts/bootstrap.min.js" type="text/javascript"></script>
+
+	
+	<script src="javascripts/bootstrap-checkbox-radio.js"></script>
+
+	<script src="javascripts/chartist.min.js"></script>
+
+    <script src="javascripts/bootstrap-notify.js"></script>
+
+  
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<script src="javascripts/paper-dashboard.js"></script>
+
+	
+	<script src="javascripts/demo.js"></script>
+
+
+</html>

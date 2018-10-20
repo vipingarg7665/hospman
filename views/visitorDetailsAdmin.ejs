@@ -1,0 +1,813 @@
+<html>
+
+<head>
+        <style>
+                * {
+                    box-sizing: border-box;
+                }
+                body {
+                    margin:50px 400px; padding:0px;
+                   
+                    
+                }
+                input[type=text], select, textarea {
+                    width: 50%;
+                    padding: 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    resize: vertical;
+                }
+                
+                label {
+                    padding: 12px 12px 12px 0;
+                    display: inline-block;
+                }
+                
+                input[type=submit] {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 12px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    float: right;
+                }
+                
+                input[type=submit]:hover {
+                    background-color: #45a049;
+                }
+                
+                .container {
+                    border-radius: 5px;
+                    background-color: #f2f2f2;
+                    padding: 20px;
+                }
+                
+                .col-25 {
+                    float: left;
+                    width: 25%;
+                    margin-top: 6px;
+                }
+                
+                .col-75 {
+                    float: left;
+                    width: 75%;
+                    margin-top: 6px;
+                }
+                
+                /* Clear floats after the columns */
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+                
+                /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                @media screen and (max-width: 600px) {
+                    .col-25, .col-75, input[type=submit] {
+                        width: 100%;
+                        margin-top: 0;
+                    }
+                }
+                </style>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Bringo</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="stylesheets/paper-dashboard.css" rel="stylesheet"/>
+    <link href="stylesheets/themify-icons.css" rel="stylesheet">
+</head>
+<body>
+    
+<div class="wrapper">
+	<div class="sidebar" data-background-color="white" data-active-color="danger">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+             <center> <h3>BrinGo</h3></center>
+            </div>
+                <ul class="nav">
+                <li class="active">
+                    <button type="button" onclick="m1()">Visitor/Guest Details</button>
+                </li>
+                 <li >
+                    <button type="button" onclick="m2()">Pickup</button>
+                </li>
+                <li >
+                    <button type="button" onclick="m3()">Departure</button>       
+                </li>
+                <li >
+                     <button type="button" onclick="m4()">Meals</button>
+                </li>
+                <li >
+                    <button type="button" onclick="m5()">Accomodation</button>      
+                </li>
+            </ul>
+    	</div>
+    </div>
+    <div class="main-panel">
+		<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Visitor Details</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Request Status</p>
+                            </a>
+                        </li>
+                        
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="col-sm-8 col-sm-offset-2">
+                <div class="jumbotron text-center">
+                      <img src="image/chitkaraLogo.png" alt="logo" width="200" height="100">
+                </div>
+     <form action="/bringo/login" method="post">
+
+        <!-------------------------------------------------------------------------------------DIV TAG WITH ID 01 -------------------------------------------------------------------------------------------------------->
+                <div id='id01' style="display: none">
+                    <div class="form-group">
+                         <div class="form-group">
+                                         <div id="box">
+                                             <div id="row1">
+                                             <div class="col-md-2">
+                                                    <div class="form-group">
+                                                         <label>Mr/Ms/Mrs</label>
+                                                         <select name="gender"  class="form-control border-input"> 
+                                                          <option value="Mrs">Mr</option>
+                                                          <option value="Ms">Ms</option>
+                                                          <option value="Mrs">Mrs</option>
+                                                          <option value="others">others</option>
+                                                        </select> 
+                                                     </div>
+                                             </div>
+                                            <div class="col-md-5">
+                                                    <div class="form-group">
+                                                         <label>First Name<font color="red">*</font></label>
+                                                        <input type="text"  name="firstName" placeholder="eg - Johnny" class="form-control border-input" > 
+                                                     </div>
+                                            </div>
+                                             <div class="col-md-5">
+                                                    <div class="form-group">
+                                                         <label> Last Name<font color="red">*</font></label>
+                                                         <input type="text"  name="lastName" placeholder="eg - Bonzella" class="form-control border-input" > 
+                                                     </div>
+                                             </div>
+                                            </div>
+                                         </div>
+                                    <br><br><br><br>
+                                    <label>Organization<font color="red">*</font></label>
+                                    <input type="text"  name="organization" placeholder="eg - Google" class="form-control border-input" required>
+                                    <br>
+                                    <label>Contact<font color="red">*</font></label>
+                                    <input type="number"  name="contact" placeholder="eg - 9876543210" class="form-control border-input" required>
+                                    <br>
+                                    <label>Alt. Contact</label>
+                                    <input type="number"  name="altContact" class="form-control border-input" >
+                                    <br> 
+                                    <label>Email<font color="red">*</font></label>
+                                    <input type="email"  name="email" placeholder="abc.xyz@def.com" class="form-control border-input" required>
+                                    <br>
+                                    <label>Arrival date<font color="red">*</font></label>
+                                    <input type="date"   name="arrival  date" placeholder="date"  class="form-control border-input" required>
+                                    <br>
+                                    <label>Arrival time<font color="red">*</font></label>
+                                    <input type="time"   name="arrival time" placeholder="date"  class="form-control border-input" required>
+                                    <br/>
+                                    <label>Purpose of visit<font color="red">*</font></label>
+                                    <textarea rows="4" cols="80" resize:none name="Purpose"></textarea>
+                                    <br><br>                 
+                                    <input type="submit" class="btn btn-info btn-fill btn-wd"   value="Save" >
+                                    <input type="submit" class="btn btn-info btn-fill btn-wd"   value="Save and add more" >
+                         </div>
+                    </div>
+                </div>
+
+    <!---------------------------------------------------------------              DIV TAG WITH ID= ID02                     -------------------------->
+             <div id="id02" style="display: none">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>departement</label>
+                                <input type="text"  name="departement" placeholder="departement" class="form-control border-input" > 
+                            </div>
+                        </div>
+                         <div class="col-md-4">
+                               <div class="form-group">
+                                   <label>contact number</label>
+                                   <input type="number"  name="contact number" placeholder="contact number" class="form-control border-input" > 
+                               </div>
+                        </div>
+                        <br><br>
+                        
+                                <div class="form-group">
+                                    <label>pick Required</label>
+                                    <select name="pickup-req"  class="form-control border-input"> 
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                    <label>pickup info *</label>
+                                   <select name="pickup"  class="form-control border-input"> 
+                                         <option value="Chandigarh Airport">Chandigarh Airport</option>
+                                         <option value="Chandigarh Railway">Chandigarh Railway</option>
+                                         <option value="Rajpura Railway station">Rajpura Railway station</option>
+                                         <option value="Ambala cantt Railway station">Ambala cantt Railway station</option>
+                                    </select><br>
+                                   <label>if others then</label>
+                                   <input type="text"  name="pickup1" placeholder="pickup" class="form-control border-input" >
+                                   <hr color="grey" size="30">
+                                   <label>Transport cordinator *</label>
+                                  <select name="Transport cordinator" id="mySelect1" onchange="myFunction1()" class="form-control border-input"> 
+                                        <option value="123456789">abc</option>
+                                         <option value="987642525">cde</option>
+                                         <option value="4563778388">efg</option>
+                                         <option value="73666664364">cde</option>
+                                         <option value="13242435">5</option>
+                                         <option value="444445455t4">6</option>
+                                         <option value="444t45533">7</option>
+                                         <option value="24345545555">8</option>
+                                  </select>
+                                <label>phone No</label>
+<script>
+function myFunction1()
+{
+var x = document.getElementById("mySelect1").value;
+document.getElementById("demo1").value = x;
+}
+</script>
+                                <input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo1" value="" required>
+                                <hr color="grey" size="30">
+                                <label>Pick person *</label>
+                                     <select name="Pick person" id="mySelect" onchange="myFunction()" class="form-control border-input"> 
+                                           <option value="123456789">abc</option>
+                                           <option value="987642525">cde</option>
+                                           <option value="4563778388">efg</option>
+                                            <option value="73666664364">cde</option>
+                                            <option value="13242435">5</option>            
+                                            <option value="444445455t4">6</option>
+                                           <option value="444t45533">7</option>
+                                           <option value="24345545555">8</option>
+                                     </select>
+  <label>phone No</label>
+<script>
+function myFunction() {
+var x = document.getElementById("mySelect").value;
+document.getElementById("demo").value = x;
+}
+</script>
+
+
+<input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo" value="" required><br/><br/>
+                        <div class="col-md-4">
+                         <div class="form-group">
+                                   <label>Vehicle type</label>
+                                   <select name="vt"  class="form-control border-input"> 
+                       <option value="Chandigarh Airport">ABC</option>
+                       <option value="Chandigarh Railway">CDE</option>
+                       <option value="Rajpura Railway station">GHI</option>
+           
+                     </select>
+                                 
+                               </div>
+                           </div>
+                          <div class="col-md-4">
+                               <div class="form-group">
+                                  
+                                 <label>CAPACITY</label>
+                                              <select name="cp"  class="form-control border-input"> 
+                       <option value="Chandigarh Airport">1</option>
+                       <option value="Chandigarh Railway">2</option>
+                       <option value="Rajpura Railway station">3</option>
+                        <option value="Rajpura Railway station">4</option>
+                         <option value="Rajpura Railway station">5</option>
+                        <option value="Rajpura Railway station">6</option>
+                       <option value="Rajpura Railway station">7</option>
+                        <option value="Rajpura Railway station">8</option>
+                     </select>
+                                  
+                               </div>
+                           </div>
+                         <div class="col-md-4">
+                               <div class="form-group">
+                                   
+                                    <label>Vehicle NO</label>
+                                              <select name="vn"  class="form-control border-input"> 
+                       <option value="Chandigarh Airport">123</option>
+                       <option value="Chandigarh Railway">455</option>
+                       <option value="Rajpura Railway station">678</option>
+           
+                     </select>
+                               </div>
+                           </div>
+
+ <h5>Accompanied by :(pick up)</h5>
+                         <div id="box">
+                             <div id="row1">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>full name</label>
+                                        <input type="text"  name="full name" placeholder="full name" class="form-control border-input" > 
+                                    </div>
+                                 </div>
+                          <div class="col-md-4">
+                                <input type="button" onclick="newrow(this)" value="New" class="button-new" >
+                                <input type="button" onclick="deleterow(this)" value="Delete" style="display: none" class="button-delete"> <br><br>
+                          </div>
+                        </div>
+                            <input type="submit" class="btn btn-info btn-fill btn-wd"   value="confirm & exit"  >
+                        </div></div></div>
+
+        <!--------------------------------------------------------------DIV TAG WITH ID = ID03------------------------------------------------------------------->
+              <div id='id03' style="display:none"> 
+                    <div class="form-group">
+                            <label>Deaparture Date :</label>
+                             <input type="date"  name="ddate" placeholder="deaparture date" class="form-control border-input" >
+                           <label>Deaparture time :</label>
+                             <input type="time"  name="dtime" placeholder="deaparture time" class="form-control border-input" >
+                              <label>pick Required</label>
+                               <select name="pickup-req"  class="form-control border-input"> 
+                             <option value="Yes">Yes</option>
+                             <option value="No">No</option>
+                                   </select>
+                                 <label>pickup info *</label>
+                              <select name="pickup"  class="form-control border-input"> 
+                             <option value="Chandigarh Airport">Chandigarh Airport</option>
+                             <option value="Chandigarh Railway">Chandigarh Railway</option>
+                             <option value="Rajpura Railway station">Rajpura Railway station</option>
+                              <option value="Ambala cantt Railway station">Ambala cantt Railway station</option>
+                           </select><br>
+                             <label>if others then</label>
+                             <input type="text"  name="pickup1" placeholder="pickup" class="form-control border-input" >
+                            <hr color="grey" size="30">
+
+                            <label>Drop Transport cordinator *</label>
+                                   <select name="Drop Transport cordinator" id="mySelect1" onchange="myFunction1()" class="form-control border-input"> 
+                         <option value="123456789">abc</option>
+                         <option value="987642525">cde</option>
+                         <option value="4563778388">efg</option>
+                          <option value="73666664364">cde</option>
+                           <option value="13242435">5</option>
+                          <option value="444445455t4">6</option>
+                         <option value="444t45533">7</option>
+                          <option value="24345545555">8</option>
+
+                       </select>
+
+                                    
+                            
+                                      <label>phone No</label>
+                        <script>
+function myFunction1() {
+var x = document.getElementById("mySelect1").value;
+document.getElementById("demo1").value = x;
+}
+</script>
+
+
+                                                 <input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo1" value="" required>
+                         
+
+                         <hr color="grey" size="30">
+                             <label>drop person *</label>
+                                       <select name="drop person" id="mySelect" onchange="myFunction()" class="form-control border-input"> 
+                         <option value="123456789">abc</option>
+                         <option value="987642525">cde</option>
+                         <option value="4563778388">efg</option>
+                          <option value="73666664364">cde</option>
+                           <option value="13242435">5</option>
+                          <option value="444445455t4">6</option>
+                         <option value="444t45533">7</option>
+                          <option value="24345545555">8</option>
+
+                       </select>
+
+                                    
+                            
+                                      <label>phone No</label>
+                        <script>
+function myFunction() {
+var x = document.getElementById("mySelect").value;
+document.getElementById("demo").value = x;
+}
+</script>
+
+
+<input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo" value="" required><br/><br/>
+                              <div class="col-md-4">
+                               <div class="form-group">
+                                         <label>Vehicle type</label>
+                                         <select name="vt"  class="form-control border-input"> 
+                             <option value="Chandigarh Airport">ABC</option>
+                             <option value="Chandigarh Railway">CDE</option>
+                             <option value="Rajpura Railway station">GHI</option>
+                 
+                           </select>
+                                       
+                                     </div>
+                                 </div>
+                                <div class="col-md-4">
+                                     <div class="form-group">
+                                        
+                                       <label>CAPACITY</label>
+                                                    <select name="cp"  class="form-control border-input"> 
+                             <option value="Chandigarh Airport">1</option>
+                             <option value="Chandigarh Railway">2</option>
+                             <option value="Rajpura Railway station">3</option>
+                              <option value="Rajpura Railway station">4</option>
+                               <option value="Rajpura Railway station">5</option>
+                              <option value="Rajpura Railway station">6</option>
+                             <option value="Rajpura Railway station">7</option>
+                              <option value="Rajpura Railway station">8</option>
+                           </select>
+                                        
+                                     </div>
+                                 </div>
+                               <div class="col-md-4">
+                                     <div class="form-group">
+                                         
+                                          <label>Vehicle NO</label>
+                                                    <select name="vn"  class="form-control border-input"> 
+                             <option value="Chandigarh Airport">123</option>
+                             <option value="Chandigarh Railway">455</option>
+                             <option value="Rajpura Railway station">678</option>
+                 
+                           </select>
+                                     </div>
+                                 </div>
+
+
+
+
+
+
+<center><h5>Accompanied by :(pick up)</h5></center>
+<div id="box"><div id="row1">
+<div class="col-md-4">
+                               <div class="form-group">
+                                      
+                                       <label>full name</label>
+                                   <input type="text"  name="full name" placeholder="full name" class="form-control border-input" > 
+                                     </div>
+                                 </div>
+                                <div class="col-md-4">
+                                     <div class="form-group">
+                                      <label>departement</label>
+                                       
+                                       
+                                                  <input type="text"  name="departement" placeholder="departement" class="form-control border-input" > 
+                                        
+                                     </div>
+                                 </div>
+                               <div class="col-md-4">
+                                     <div class="form-group">
+                                         <label>contact number</label>
+                                       
+                                         
+                                              <input type="number"  name="contact number" placeholder="contact number" class="form-control border-input" > 
+                                     </div>
+                                 </div>
+<br><br><input type="button" onclick="newrow(this)" value="New" class="button-new" ><input type="button" onclick="deleterow(this)" value="Delete" style="display: none" class="button-delete"> <br><br></div></div> </div></div>
+            <!-- --------------------------------------------------------------------------------------------------- DIV TAG WITH ID = ID 04------------------------------------------------------------------------------------------------------------->
+          <div id='id04' style="display: none">
+                <div class="form-group">
+                        <div class="form-group">
+                              <label> Date :</label>
+                              <input type="date"  name="mdate" placeholder="meals date" class="form-control border-input" >
+                              <label> time :</label>
+                              <input type="time"  name="mtime" placeholder="meals time" class="form-control border-input" >
+                              <hr>
+                              <input type="checkbox" name="morning" value="morning time">Morning time<br>
+                              <input type="radio"  name="tea" ><label> Morning Tea</label>
+                              <input type="radio"  name="tea" ><label>Tea + Snack</label>
+                        </div>
+                     </div>
+                              <br/><br/>
+                    <div class="col-md-4">
+                       <div class="form-group">
+                             <label>Venue</label>
+                             <select name="venue"  class="form-control border-input"> 
+                                   <option value="Chandigarh Airport">ABC</option>
+                                   <option value="Chandigarh Railway">CDE</option>
+                                   <option value="Rajpura Railway station">GHI</option>
+                             </select>
+                       </div>
+                   </div>
+                   <div class="col-md-4">
+                       <div class="form-group">
+                                <label>person responsible for :</label>
+                                <select name="person responsible" id="mySelect" onchange="myFunction()" class="form-control border-input"> 
+                                   <option value="123456789">1</option>
+                                   <option value="987642525">2</option>
+                                   <option value="4563778388">3</option>
+                                   <option value="73666664364">4</option>
+                                   <option value="13242435">5</option>
+                                   <option value="444445455t4">6</option>
+                                   <option value="444t45533">7</option>
+                                   <option value="24345545555">8</option>
+                               </select>
+                        </div>
+                   </div>
+                   <div class="col-md-4">
+                        <div class="form-group">
+                               <label>phone No</label>
+<script>
+function myFunction() {
+var x = document.getElementById("mySelect").value;
+document.getElementById("demo").value = x;
+}
+</script>
+                                    <input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo" value="" required>
+                               </select>
+                        </div>
+                   </div>
+
+                           <center><h5>Accompanied by :(meals)</h5></center>
+                           <div class="col-md-4">
+                                 <div class="form-group">
+                                     <label>full name</label>
+                                     <input type="text"  name="full name" placeholder="full name" class="form-control border-input" > 
+                                 </div>
+                           </div>
+                            <div class="col-md-4">
+                               <div class="form-group">
+                                        <label>departement</label>
+                                        <input type="text"  name="departement" placeholder="departement" class="form-control border-input" > 
+                               </div>
+                           </div>
+                           <div class="col-md-4">
+                               <div class="form-group">
+                                       <label>contact number</label>
+                                       <input type="number"  name="contact number" placeholder="contact number" class="form-control border-input" > 
+                                </div>
+                            </div>
+                       <hr>
+                           <input type="checkbox" name="morning" value="morning time"> Breakfast<br/>
+                       <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Venue</label>
+                                    <select name="venue"  class="form-control border-input"> 
+                                          <option value="Chandigarh Airport">ABC</option>
+                                          <option value="Chandigarh Railway">CDE</option>
+                                          <option value="Rajpura Railway station">GHI</option>
+                                   </select>
+                            </div>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="form-group">
+                                     <label>person responsible for :</label>
+                                            <select name="person responsible" id="mySelect1" onchange="myFunction1()" class="form-control border-input"> 
+                                                    <option value="123456789">1</option>
+                                                    <option value="987642525">2</option>
+                                                    <option value="4563778388">3</option>
+                                                    <option value="73666664364">4</option>
+                                                    <option value="13242435">5</option>
+                                                    <option value="444445455t4">6</option>
+                                                    <option value="444t45533">7</option>
+                                                    <option value="24345545555">8</option>
+                                           </select>
+                           </div>
+                       </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                                   <label>phone No</label>
+<script>
+function myFunction1() {
+var x = document.getElementById("mySelect1").value;
+document.getElementById("demo1").value = x;
+}
+</script>
+                               <input type="text"  name="phone no" placeholder="phone no" class="form-control border-input" id="demo1" value="" required>
+                           </div>
+                        </div>
+                       <center><h5>Accompanied by :(meals)</h5></center>
+                        <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>full name</label>
+                                  <input type="text"  name="full name" placeholder="full name" class="form-control border-input" > 
+                             </div>
+                        </div>
+                        <div class="col-md-4">
+                               <div class="form-group">
+                                        <label>departement</label>
+                                        <input type="text"  name="departement" placeholder="departement" class="form-control border-input" > 
+                                </div>
+                        </div>
+                        <div class="col-md-4">
+                               <div class="form-group">
+                                       <label>contact number</label>
+                                       <input type="number"  name="contact number" placeholder="contact number" class="form-control border-input" > 
+                               </div>
+                        </div>
+</div>
+                    <!----------------------------------------------------------------------div tag with id 05 ----------------------------------------------------------------------------------------------------------------------->
+    <div id='id05' style="display:none">
+                                      <h2>Accomodation</h2>
+
+
+<div class="container"  >
+             <div class="row">
+                   <div class="col-25">
+                         <label for="roomtype">Room Type :</label>
+                   </div>
+                   <div class="col-75">
+                     <input type="text" id="roomtype" name="firstname" placeholder="Enter type of room you want..">
+                   </div>
+             </div>
+             <div class="row">
+                  <div class="col-25">
+                       <label for="roomno">Room no :</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text" id="roomno" placeholder="Enter room no..">
+                  </div>
+             </div>
+             <div class="row">
+                  <div class="col-25">
+                        <label for="buildingname">Building Name :</label>
+                  </div>
+                  <div class="col-75">
+                  <input type="text" id="roomno" placeholder="Name of building..">
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label>Departure Date :</label>
+                    </div>
+                <div class="col-75">
+              <input type="date" name="departuredate" value="date" required>
+             </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+          <label>Check-in Time:</label>
+      </div>
+      <div class="col-75">
+    
+        <input type="time" name="checkintime" required>
+      </div>
+    </div>
+    
+     <div class="row">
+      <div class="col-25">
+         <label>Check Out Date :</label>
+      </div>
+      <div class="col-75">
+     
+            <input type="date" name="checkoutdate" value="date" required>
+      </div>
+    </div>
+    
+     <div class="row">
+      <div class="col-25">
+          <label>Check-out Time:</label>
+      </div>
+      <div class="col-75">
+     
+            <input type="time" name="checkouttime" required>
+      </div>
+    </div>
+   
+   <div  id="box">
+        <div id="row1">
+    <div class="row">
+            <div class="row" >
+                <div class="col-25">
+            <label>Name :</label>
+        </div>
+            <div class="col-75">
+            <input type="text" name="accompaniedfullname" placeholder="Full name.. " required>
+            </div>
+        </div>
+          <div class="row" >
+                <div class="col-25">
+            <label>Contact Number :</label>
+        </div>
+            <div class="col-75">
+            <input type="text" name="accompaniedcontactno" placeholder="Contact number " required>
+            </div>
+        </div>
+       <div class="row">
+        <input type="button" onclick="newrow(this)" value="Add More.." class="button-new"><input type="button" onclick="deleterow(this)" value="Delete" style="display: none"class="button-delete"> <br><br></div></div>
+       </div>
+    </div>
+    </div>
+        <div class="row">
+      <input type="submit" value="Submit">
+    </div></div>
+
+              
+             </form></div></div></div>
+
+             <script>
+                    function newrow(id){
+                            var row= id.parentNode; 
+                               var box=document.getElementById("box");
+                           var dnew=row.cloneNode(true);
+                           box.appendChild(dnew);
+                             var deletelist= box.getElementsByClassName("button-delete");
+                           var display="none";
+                           if(deletelist.length>1){
+                               display="";}
+                           for(i=0;i<deletelist.length;i++){
+                               deletelist[i].style.display= display; 
+                           }
+                           }
+                           
+                       
+                           function deleterow(id){
+                               var row= id.parentNode; 
+                               var box=document.getElementById("box");
+                               box.removeChild(row);
+                               var deletelist= box.getElementsByClassName("button-delete");
+                               if(deletelist.length<2){
+                                   deletelist[0].style.display="none"; } 
+                           }
+                       
+                           function m1()
+    {
+        document.getElementById('id01').style.display='block';
+        document.getElementById('id02').style.display='none';
+        document.getElementById('id03').style.display='none';
+        document.getElementById('id04').style.display='none';
+        document.getElementById('id05').style.display='none';
+
+    }
+    function m2()
+    {
+        document.getElementById('id01').style.display='none';
+        document.getElementById('id02').style.display='block';
+        document.getElementById('id03').style.display='none';
+        document.getElementById('id04').style.display='none';
+        document.getElementById('id05').style.display='none';
+
+    }
+    function m3()
+    {
+        document.getElementById('id01').style.display='none';
+        document.getElementById('id02').style.display='none';
+        document.getElementById('id03').style.display='block';
+        document.getElementById('id04').style.display='none';
+        document.getElementById('id05').style.display='none';
+
+    }
+    function m4()
+    {document.getElementById('id01').style.display='none';
+        document.getElementById('id02').style.display='none';
+        document.getElementById('id03').style.display='none';
+        document.getElementById('id04').style.display='block';
+        document.getElementById('id05').style.display='none';
+
+    }
+    function m5()
+    {
+        
+        document.getElementById('id01').style.display='none';
+        document.getElementById('id02').style.display='none';
+        document.getElementById('id03').style.display='none';
+        document.getElementById('id04').style.display='none';
+        document.getElementById('id05').style.display='block';
+        
+
+
+    }
+          
+                       
+                       </script>
+            
+
+</body>
+
+    <script src="javascripts/jquery.min.js" type="text/javascript"></script>
+	<script src="javascripts/bootstrap.min.js" type="text/javascript"></script>
+
+	
+	<script src="javascripts/bootstrap-checkbox-radio.js"></script>
+
+	<script src="javascripts/chartist.min.js"></script>
+
+    <script src="javascripts/bootstrap-notify.js"></script>
+
+  
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<script src="javascripts/paper-dashboard.js"></script>
+
+	
+	<script src="javascripts/demo.js"></script>
+
+
+</html>
